@@ -1,0 +1,67 @@
+{
+ "30": {
+  "layer": 4,
+  "neuron": 1124,
+  "M": 3.7437586884362792,
+  "expl": {
+   "label": "Negative on incoherent spun/word-salad spam and broken text; positive weak",
+   "positive_pole": "Weak and diffuse, rarely above +3. Small values (+1 to +3) appear on fluent, predictable continuations: fixed phrases ('in regard to', 'in accordance with', 'about this matter'), sentence-final periods in templated SEO/porn boilerplate ('Pornhub.com.', 'XXX movies.\\n' at about +3), 'reformat', 'Baseball' in 'World Baseball Classic' or 'Youth Baseball', and pronouns or verbs in ordinary narrative or quotes ('him', 'me', 'it's', 'said'). These are about +1. Fluent coherent prose sometimes gives scattered +1s but is mostly 0.",
+   "negative_pole": "Tokens inside machine-generated, article-spun or word-salad spam (pharma/dating/essay/binary-options spam, ungrammatical keyword stuffing), where the grammar has collapsed and the next token is unpredictable. Activation lands on function words and short tokens at points of grammatical breakdown: 'to', 'and', 'by', 'for', 'of', 'in', 'will', 'other', 'or', periods and commas, and mid-word fragments ('l' after 'a civil'). It also fires on line breaks or periods that cut a sentence off mid-thought or mid-word ('make su\\n', 'located in\\n', 'during a.', 'was ...'). The deeper the incoherence, the stronger it gets; many tokens in a garbled passage carry -1 to -3, with occasional spikes of -5 to -10.",
+   "rubric": "Background is 0 on almost all tokens; normal web text, including spammy but grammatical text, stays within \u00b11. Within spun or nonsensical gibberish, assign -1 to -3 to many function words and punctuation marks, and -4 to -10 at the most broken junctures. Examples: 'a civil l' gives 'l' -10; 'dedication to' in a pharma-spam salad gives 'to' -8; 'With her other,' gives 'other' -7; 'Measuring applicants' in garbled text gives -7; a truncated line break such as 'located in\\n' gives -6; 'during a.' gives -4. The very next token after a spike is often slightly positive (+1, e.g. 'and' after 'l'). Positive: +1 to +3 on fluent boilerplate sentence ends and fixed collocations ('regard to', 'accordance with') and on 'reformat' or 'Baseball'; otherwise 0. Do not give strong negatives to merely low-quality or adult/SEO text that is still grammatical, nor to topic words themselves (drugs, sex, dating); breakdown of grammar and coherence is what matters.",
+   "looks_monosemantic": 3
+  },
+  "raw": null
+ },
+ "72": {
+  "layer": 8,
+  "neuron": 6734,
+  "M": 14.909815798269044,
+  "expl": {
+   "label": "+ extraction particles (dig/pull out); \u2212 gyroscope/IMU/inertial sensor terms",
+   "positive_pole": "Physical extraction or insertion phrasal verbs: the particle 'out' (sometimes 'up', 'in', 'into') after verbs like dig, pull, pluck, suck, tug, rip, squeeze, flush, put. The particle carries the peak. Smaller activation lands on the verb itself ('dig', 'digging', 'plucking') and on the following determiner or 'of' ('the', 'your', 'his', 'of'). Strongest for 'dig out' and 'pull out the'. Related words like 'unearth', 'ground', 'imbed into' and 'put in (patio doors)' give weaker hits.",
+   "negative_pole": "Inertial and motion-sensing vocabulary: 'gyroscope' (gy|-10, roscope|-9), 'inertial' (ial|-6), IMUs (-7), accelerometer (-2 to -6), gyration (-5), acceleration, flywheels, freefall, coast, drift (around -2). Also weak hits on acronym fragments such as EK or IM (around -2).",
+   "rubric": "Background is 0 on almost every token. Positive: 'out' in 'dig/dug/digging out' gives +3 to +4. 'pull out the' gives out +2 and the +2 to +3. 'dig up' gives up +3. 'put in' (installing something or 'put in an appearance') gives +2 to +3. Other 'X out' extraction verbs (suck, rip, pluck, tug, flush, squeeze) give +1 to +2. The verb gives +1, and a following the/your/of/his gives +1 to +2. Abstract senses of 'out' (go out, find out, out of time) give 0. Negative: 'gyroscope' gives -9 to -10 on both pieces. 'inertial', 'IMUs' and 'sensor' in an IMU context give -4 to -7. 'accelerometer' gives -2 to -6, stronger next to gyro. 'gyration' gives -5. 'acceleration', 'flywheel', 'freefall', 'coast', 'drift' and 'momentum' give -1 to -2. Nearby function words in sensor text give about -1.",
+   "looks_monosemantic": 3
+  },
+  "raw": null
+ },
+ "83": {
+  "layer": 8,
+  "neuron": 9703,
+  "M": 11.901905069814454,
+  "expl": {
+   "label": "Pagination/result-count headers (\"Showing 1\u201312 of\"), plus progressive 'coming/looking' verbs",
+   "positive_pole": "Strongest on e-commerce/listing pagination headers at a line start: \"Showing 1\u201312 of\", \"Displaying 1 - 10\", \"Displaying items 1-5\", \"Showing the single result\", \"Displaying reviews 1-5\". Activation spreads across the phrase. It peaks on the space or number token right after Showing/Displaying (~+8 to +10), on the dash/range separator (~+7 to +10) and on \"ing\" of Displaying (~+6 to +8). \"Showing\" itself gets ~+3 to +8, \"of\"/\"Results\"/the newline after ~+3 to +5, and later digits ~+2 to +4. A weaker secondary sense is present-progressive or deictic \"what's arriving/happening\" verbs. Examples: \"X is coming (to/soon)\", \"Here comes\", \"is looking northwest\", \"looking forward\", \"look(in) pretty good\", \"here we sit\", \"Coming up next\". These give ~+3 to +5 on the verb, and ~+1 to +2 on the following word.",
+   "negative_pole": "Weak, maximum about -5. It responds to content words inside titles or proper names of works and organizations, especially after \"The\" or an opening quote. Examples: The Circle, The Martian, The Triangle, The Weather Below, They Live, \"Girls\", \"Her\"itage, H.E.R, The Blockheads, Girls Loft. The title noun gets ~-2 to -5, and the preceding \"The\" ~-1.",
+   "rubric": "Background is 0 on almost all tokens. Pagination header \"Showing/Displaying [items/entries/reviews] N\u2013M of K\": +6 to +10 on the space/number/dash right after the verb, +5 to +8 on \"ing\", +3 to +5 on of/Results/newline, +1 to +4 on later digits. \"Showing the single result\": +8, +6, +4, +3. A section label like \"Displaying posts in\" or \"Displaying active committee roster\" gets ~+3 to +6 on \"ing\". \"coming\" in \"is coming to/soon/along\" or \"Here comes\" gets +4 to +5. \"looking\" in \"looking forward/northwest/pretty good\" gets +3 to +6. Other progressive phrases like \"we're starting to\", \"are we seeing\", or \"off I went\" get +1 to +2. \"Shipping\" as a label gets about +1. Ordinary uses of show/display (\"the data shows\") get about 0. Title or proper-name nouns of works gets -2 to -5, with \"The\" before them at about -1.",
+   "looks_monosemantic": 3
+  },
+  "raw": null
+ },
+ "115": {
+  "layer": 16,
+  "neuron": 1259,
+  "M": 4.058234224782715,
+  "expl": {
+   "label": "Closing/terminating a construct: 'click OK to close dialog box', endif, unquote",
+   "positive_pole": "Tokens that close or terminate an open structure or sequence. The strongest case is UI instructions to dismiss a dialog. In \"Click OK to close the dialog box\", 'box' is about +10, 'OK' +7 to +9, 'close' about +6, and 'to' and 'Click' +1 to +2. Other clear cases are structural terminators. ASCII table border closers like '| +--' after a row reach the '+' at up to +10, the '|' at +6, and '--' at +4. Others: '.endif' (+5), 'un'quote ending a quotation (+4), and SQL 'GROUP BY \u2026 ) ON' (+2 to +3). It weakly generalizes to the end of a life or existence: 'passed away' (+2 to +3), 'died' (+2), 'the dream ended' (+2), 'each one oblivious of the other' (+3). It also gives scattered weak values (+1 to +3) on terminal list or enumeration items such as '2.' or '59' percent, and on the final word of a fixed phrase.",
+   "negative_pole": "Weak, max about -4. Fires on recipe or procedure instructions for a resting or holding step after cooking. Examples: 'Cool' after 'Bake\u2026 until golden' (-2 to -4); 'Keep warm' (-2); 'Remove from heat and set aside' / 'and let sit' (-1 to -2, mostly on 'and' and the verb); 'Cool and frost' (-2). It also gives occasional -1 to -2 on other process-ending verbs, e.g. 'booting', 'hanged himself', 'five days'. Food nouns and 'minutes' in these same recipes are often slightly positive (+1).",
+   "rubric": "Background is 0 on nearly all tokens; under 0.1% of tokens reach |1|. Score +8 to +10 for 'OK' or 'box' in 'click OK to close the dialog box', and for a '+' corner closing an ASCII table row. Score +5 to +7 for 'click OK' alone, 'close' in a UI-dismissal context, and preprocessor 'endif'. Score +3 to +4 for 'unquote', 'passed away', SQL 'ON' or 'GROUP' after a closing subquery, and 'the other' at the end of a contrast. Score +1 to +2 for weak list or terminal markers, the token right after a step ends, 'died', and digits in a final enumerated item. Score -2 to -4 for 'Cool' or 'Keep warm' as a recipe step after baking or boiling. Score -1 to -2 for 'and set aside' / 'let sit' / 'Remove'. Do NOT fire on ordinary mentions of 'close' or 'dialog' without the dismissal instruction, on general prose, or on opening steps like 'Select', 'Open', or 'Click Here'.",
+   "looks_monosemantic": 2
+  },
+  "raw": null
+ },
+ "231": {
+  "layer": 32,
+  "neuron": 1699,
+  "M": 21.69900895165039,
+  "expl": {
+   "label": "Noun-phrase build-up (+) vs. verbal/purpose/addressee clauses (\u2212) in formal, often translated prose",
+   "positive_pole": "Tokens inside a noun phrase that is being built toward a concrete, technical or institutional head noun. These are typically preposition + determiner + modifier chains such as 'of the first [dose]', 'for the financing of this wind power [project]', 'in our warehouses', 'of mixed products', 'an antioxidant', 'Intensive Lightening Serum', 'Its manufacturing areas', 'France's Carrefour', 'a Sanofi company', 'in the [south]', 'biotechnological company'. The activation sits on the determiner or adjective/modifier just before the head noun (the, first, this, wind, power, an, mixed, various, large-scale). It grows as the chain deepens ('of' \u2192 'the' \u2192 'first'), and is largest on the final modifier (+5 to +10). The head noun itself is usually lower. Most common in formal, report-like, corporate, product or news text, often written by non-native or translating writers (French, Russian, Italian sources).",
+   "negative_pole": "Verbal and predicative continuations, especially purpose or ability clauses and addressee or agent pronouns in promotional, descriptive or bio prose. Examples: 'and' linking verbs ('resumes and reinterprets' \u221210), 'was [fired]' \u22129, 'another way to inhabit' (\u22128, \u22125, \u22127), 'glad to host you' (\u22126, \u22128), 'range of affordable' \u22128, 'track your browsing, update your cart' (\u22127, \u22128), 'his/her knowledge and ability to' (\u22127, \u22125, \u22127), 'not very creative' \u22127, 'We analyze' \u22127, 'Creative Union' \u22125. Russian place-name suffixes in street or road names also fire strongly ('Nevsky' \u22129, 'Moskovsky' \u22127, 'Pulkovskoe' \u22129). Evaluative adverbs and adjectives (very, attractive) and pronouns (you, they, we, your, her) are mildly negative (\u22121 to \u22123).",
+   "rubric": "Background is about 0 for most tokens; only about 1.5% of tokens reach |value| \u2265 1, so most fluent English (sports, casual, tech lists) stays at 0. Positive values: give +1 to +2 to 'the', 'of' or 'in' inside formal noun-phrase chains. Give +3 to +6 to determiners or modifiers deep in a prepositional chain ('of the', 'in our', 'an antioxidant'). Give +7 to +10 to the final specifying modifier before a technical head noun ('first' in 'of the first dose', 'power' in 'wind power project', 'Lightening' in a product name). Negative values: give \u22121 to \u22123 to pronouns (you, we, they, his/her), 'to', evaluative words (very, attractive) and verbs in promotional or bio text. Give \u22124 to \u22128 to infinitive 'to' or possessive 'your' inside purpose or service clauses, and to 'of' in 'range of'. Give \u22128 to \u221210 to coordinating 'and' between verbs, to passive 'was' before a dramatic verb, and to Russian '-sky/-skoe' street-name suffixes. Short or plain sentences, code and lists stay at 0.",
+   "looks_monosemantic": 2
+  },
+  "raw": null
+ }
+}

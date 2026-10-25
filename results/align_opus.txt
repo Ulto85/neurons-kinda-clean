@@ -1,0 +1,4 @@
+shift -1: median corr on active windows 0.073  (n=40)
+shift +0: median corr on active windows 0.380  (n=40)
+shift +1: median corr on active windows 0.108  (n=40)
+active-window peaks where simulator predicted nonzero: 0.444

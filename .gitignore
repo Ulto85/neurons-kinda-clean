@@ -1,0 +1,6 @@
+results/raw_msgbatch_*.json
+results/*.npz
+results/buggy_v1/
+results/*.log
+__pycache__/
+.DS_Store
