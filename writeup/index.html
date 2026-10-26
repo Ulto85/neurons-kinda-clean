@@ -203,7 +203,7 @@ footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--rule);
   <p>Each pair of rows is one held-out window. The top row shades tokens by Qwen's true activation and the bottom row by the simulator's prediction, both on the explainer's −10 to +10 scale.</p>
   <div id="examples"></div>
   <div class="scale"><span>−10</span><span class="bar"></span><span>+10</span></div>
-  <p>The acronym neuron is the clearest case of Leo's point. On its strongest firings the simulation is nearly exact and avoids most of the damage in those windows. On ordinary text it does worse than deleting the neuron, because the rest of its behavior is a spread of small values the explanation never mentions.</p>
+  <p>The acronym neuron is the clearest case of Leo's point. On its strongest firings the simulation is nearly exact (correlation 0.94) and avoids most of the damage in those windows. On ordinary text it does worse than deleting the neuron, for two reasons. Even its true strong firings recover only 14% there, so most of its everyday effect is small values the explanation doesn't describe. And a score below zero means the simulation is putting wrong values into the model, most likely because "acronyms starting with C/P/D" is broader than what the neuron actually responds to. That second reason is inferred from the score, not checked token by token.</p>
 
   <p class="eyebrow">Checks</p>
   <h2>Is this the simulator's fault?</h2>
@@ -240,7 +240,7 @@ footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--rule);
   </div>
 
   <footer>
-    Code and raw results: the <span class="mono">sim-kl</span> repository. Cost: about $70 of Claude API (Batch), and about 3 GPU-hours on one H100. Summaries of both posts are paraphrased; read the originals.
+    Code and raw results: the <span class="mono">sim-kl</span> repository. Write-up text and figures by Claude; analysis by the author to follow. Cost: about $70 of Claude API (Batch), and about 3 GPU-hours on one H100. Summaries of both posts are paraphrased; read the originals.
   </footer>
 </div>
 
@@ -397,7 +397,7 @@ function drawExamples() {
   const host = document.getElementById("examples"); host.innerHTML = "";
   const notes = {
     26: "Works: a single-word detector, and the explanation captures nearly all of it.",
-    23: "Right on the peaks, wrong on everything else: worse than deleting the neuron on ordinary text.",
+    23: "Right on the peaks; on ordinary text, worse than deleting the neuron.",
     236: "A syntactic role neuron. The simulator predicts nothing in this window.",
   };
   D.examples.forEach(ex => {
