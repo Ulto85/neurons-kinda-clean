@@ -100,7 +100,7 @@ writeup/index.html       interactive version of this write-up
 results/                 explanations, scores, eval sets, summaries
 ```
 
-Runs on one H100 (80GB). The whole thing took about 3 GPU-hours and $70 of API calls.
+Runs on one H100 (80GB). Install with `pip install -r requirements.txt`. The whole thing took about 3 GPU-hours and $70 of API calls.
 ```
 python src/prepare_data.py && python src/collect.py
 python src/e1_weak_ablation.py Qwen/Qwen3-4B
